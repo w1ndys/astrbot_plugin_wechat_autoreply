@@ -1,0 +1,11 @@
+# Python 与构建产物
+__pycache__/
+*.pyc
+.venv/
+*.db
+*.db-wal
+*.db-shm
+
+# 前端依赖与构建中间产物（views/ 里的产物要入库，dashboard/node_modules 不入库）
+dashboard/node_modules/
+dashboard/dist/

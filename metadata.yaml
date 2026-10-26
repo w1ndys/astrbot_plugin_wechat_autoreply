@@ -1,0 +1,18 @@
+name: astrbot_plugin_wechat_autoreply
+display_name: 公众号自动回复
+short_desc: 为微信公众号补回后台那套自动回复：关键词、欢迎语、兜底
+desc: |
+  接入 AstrBot 后，微信公众平台后台的「自动回复」与菜单点击事件会被服务器配置接管而失效。
+  本插件把这些固定内容搬回代码层：
+
+  - 关键词回复：精确 / 包含 / 正则三种匹配，命中即回复并终止事件传播，不消耗模型
+  - 首条欢迎语：记录见过的会话，某个用户第一次发消息时回一条欢迎语
+  - 兜底回复：未命中关键词时的固定回复（默认关闭，开启后该渠道不再走模型）
+
+  规则表存在插件自己的 SQLite 里，可在插件页面的「规则」Tab 增删改查。
+version: 0.1.0
+author: w1ndys
+repo: https://github.com/w1ndys/astrbot_plugin_wechat_autoreply
+astrbot_version: ">=4.13"
+support_platforms:
+  - weixin_official_account

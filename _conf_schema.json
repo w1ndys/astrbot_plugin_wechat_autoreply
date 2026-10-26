@@ -1,0 +1,47 @@
+{
+  "enable": {
+    "description": "启用自动回复",
+    "type": "bool",
+    "default": false,
+    "hint": "总开关。关闭时插件不处理任何消息。默认关闭，配好规则再打开。"
+  },
+  "platforms": {
+    "description": "生效的平台适配器",
+    "type": "list",
+    "default": ["weixin_official_account"],
+    "hint": "按平台适配器名过滤，例如 weixin_official_account、aiocqhttp。留空表示所有平台都生效。",
+    "items": {
+      "type": "string"
+    }
+  },
+  "case_sensitive": {
+    "description": "关键词区分大小写",
+    "type": "bool",
+    "default": false,
+    "hint": "关闭时匹配前把消息与关键词都转成小写。"
+  },
+  "welcome_enable": {
+    "description": "启用首条消息欢迎语",
+    "type": "bool",
+    "default": true,
+    "hint": "某个用户在这个平台第一次发消息时，先回一条欢迎语，再继续处理后面的关键词。"
+  },
+  "welcome_reply": {
+    "description": "欢迎语内容",
+    "type": "text",
+    "default": "",
+    "hint": "留空则不发送。微信的关注事件（subscribe）不会被 AstrBot 转给插件，所以这里用「首条消息」近似代替后台的「被关注回复」。"
+  },
+  "fallback_enable": {
+    "description": "启用兜底回复",
+    "type": "bool",
+    "default": false,
+    "hint": "未命中任何关键词时回一条固定文案。注意：开启后会终止事件传播，该渠道的模型对话会被这条兜底完全取代。想保留 AI 对话就保持关闭。"
+  },
+  "fallback_reply": {
+    "description": "兜底回复内容",
+    "type": "text",
+    "default": "",
+    "hint": "仅在开启兜底回复时生效。"
+  }
+}
