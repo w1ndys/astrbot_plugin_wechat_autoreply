@@ -8,7 +8,9 @@
   "platforms": {
     "description": "生效的平台适配器",
     "type": "list",
-    "default": ["weixin_official_account"],
+    "default": [
+      "weixin_official_account"
+    ],
     "hint": "按平台适配器名过滤，例如 weixin_official_account、aiocqhttp。留空表示所有平台都生效。",
     "items": {
       "type": "string"
@@ -36,7 +38,8 @@
     "description": "启用兜底回复",
     "type": "bool",
     "default": false,
-    "hint": "未命中任何关键词时回一条固定文案。注意：开启后会终止事件传播，该渠道的模型对话会被这条兜底完全取代。想保留 AI 对话就保持关闭。"
+    "hint": "⚠️ 开启后，所有未命中关键词的消息都会回这条固定文案，并且不再进入模型对话——等于把这个渠道的 AI 关掉。只有在你完全不想要 AI 回复时才打开；「答不了怎么引导」应该写进人格 prompt。",
+    "obvious_hint": true
   },
   "fallback_reply": {
     "description": "兜底回复内容",

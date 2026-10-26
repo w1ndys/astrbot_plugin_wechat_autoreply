@@ -37,6 +37,15 @@ class Plugin(Star):
         self.rule_store = RuleStore(db_path)
         self.seen_store = SeenStore(db_path)
 
+        # 兜底一旦开启就会 stop_event，该渠道的模型对话被固定文案完全取代。
+        # 这是最容易误伤的开关（以为只是「答不了时引导」，实际拦下了所有消息），
+        # 所以启动时显式提醒一次，别让人靠猜日志。
+        if self.config.get("fallback_enable"):
+            logger.warning(
+                "[autoreply] fallback_enable 已开启：未命中关键词的消息都会用固定文案回复，"
+                "不再进入模型对话。想保留 AI 对话请关闭它——「答不了怎么引导」写进人格 prompt 即可。"
+            )
+
         context.register_web_api(
             f"/{PLUGIN_NAME}/rules", self.api_list_rules, ["GET"], "列出关键词规则"
         )
